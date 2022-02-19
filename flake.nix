@@ -6,6 +6,7 @@
   outputs = { nixpkgs }: {
     overlay = final: prev: {
       arcan = ./pkgs/arcan;
+      xarcan = ./pkgs/xarcan;
     };
   };
 }
