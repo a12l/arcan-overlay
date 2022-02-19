@@ -8,6 +8,7 @@
       arcan = ./pkgs/arcan;
       xarcan = ./pkgs/xarcan;
       durden = ./pkgs/durden;
+      pipeworld = ./pkgs/pipeworld;
     };
   };
 }
