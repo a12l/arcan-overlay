@@ -3,7 +3,7 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
 
-  outputs = { nixpkgs }: {
+  outputs = { self, nixpkgs }: {
     overlay = final: prev: {
       arcan = ./pkgs/arcan;
       xarcan = ./pkgs/xarcan;
