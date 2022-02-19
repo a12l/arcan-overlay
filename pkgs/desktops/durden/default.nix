@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     owner = "letoram";
     repo = pname;
     rev = "117f4f8c0f694ea6fc9862bcfda5a652591b1106";
-    sha256 = lib.fakeSha256;
+    sha256 = "sha256-x8Ewx5gtRP9a0nd+TchoA0b9FfT1+W20Fbq0bf87Y2k=";
   };
 
   buildInputs = [ arcan makeWrapper ] ++ lib.optionals withXarcan [ xarcan ];
