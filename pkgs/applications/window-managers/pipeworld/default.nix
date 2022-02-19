@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, makeDesktopItem, copyDesktopItems, runtimeShell
+{ stdenv, lib, fetchFromGitHub, runtimeShell
 , bash, arcan, makeWrapper, withXarcan ? true, xarcan }:
 
 stdenv.mkDerivation rec {
@@ -13,17 +13,6 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ arcan makeWrapper ] ++ lib.optionals withXarcan [ xarcan ];
-
-  nativeBuildInputs = [ copyDesktopItems ];
-
-  desktopItem = makeDesktopItem {
-    name = pname;
-    desktopName = "Pipeworld";
-    exec = pname;
-    comment = "Zooming-Tiling window manager for Arcan";
-    type = "Application";
-    terminal = "false";
-  };
 
   installPhase = ''
     runHook preInstall
