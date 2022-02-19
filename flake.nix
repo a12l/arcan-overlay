@@ -5,10 +5,10 @@
 
   outputs = { self, nixpkgs }: {
     overlay = final: prev: {
-      arcan = ./pkgs/arcan;
-      xarcan = ./pkgs/xarcan;
-      durden = ./pkgs/durden;
-      pipeworld = ./pkgs/pipeworld;
+      arcan = prev.callPackage ./pkgs/arcan {};
+      xarcan = prev.callPackage ./pkgs/xarcan {};
+      durden = prev.callPackage ./pkgs/durden {};
+      pipeworld =prev.callPackage ./pkgs/pipeworld {};
     };
   };
 }
