@@ -13,7 +13,7 @@ let
       owner = "letoram";
       repo = "arcan";
       rev = "0145a79c26600b69114092d1d2c7c6d3cf027d6a";
-      sha256 = lib.fakeSha256;
+      sha256 = "sha256-IpUJlX8OPO6nmaMM50LLPsQFtfYYPuYtWRM191biwac=";
     };
 
     openal = fetchFromGitHub {
