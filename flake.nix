@@ -7,6 +7,7 @@
     overlay = final: prev: {
       arcan = ./pkgs/arcan;
       xarcan = ./pkgs/xarcan;
+      durden = ./pkgs/durden;
     };
   };
 }
