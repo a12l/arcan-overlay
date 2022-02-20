@@ -1,4 +1,5 @@
 { arcan,
+  lib,
   makeWrapper,
   name,
   symlinkJoin,
