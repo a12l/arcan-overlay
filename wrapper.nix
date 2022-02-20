@@ -3,8 +3,8 @@
   makeWrapper,
   name,
   symlinkJoin,
-  shmifClient
-    , withXarcan ? true, xarcan
+  shmifClient ? []
+, withXarcan ? true, xarcan
 }:
 
 symlinkJoin {
