@@ -14,5 +14,9 @@ rec {
     shmifClient = [ durden ];
   };
 
-  pipeworld =prev.callPackage ./pkgs/applications/window-managers/pipeworld {};
+  pipeworld-unwrapped = prev.callPackage ./pkgs/applications/window-managers/pipeworld {};
+  pipeworld = prev.callPackage ./wrapper.nix {
+    name = "pipeworld";
+    shmifClient = [ pipeworld-unwrapped ];
+  }
 }

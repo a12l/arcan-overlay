@@ -1,5 +1,5 @@
 { stdenv, lib, fetchFromGitHub, runtimeShell
-, bash, arcan, makeWrapper, withXarcan ? true, xarcan }:
+, bash, arcan,  withXarcan ? true, xarcan }:
 
 stdenv.mkDerivation rec {
   pname = "pipeworld";
