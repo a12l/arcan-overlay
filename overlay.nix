@@ -8,10 +8,10 @@ rec {
   
   xarcan = prev.callPackage ./pkgs/servers/x11/xarcan {};
 
-  durden = prev.callPackage ./pkgs/desktops/durden {};
-  durden-wrapped = prev.callPackage ./wrapper.nix {
-    name = "durden-wrapped";
-    shmifClient = [ durden ];
+  durden-unwrapped = prev.callPackage ./pkgs/desktops/durden {};
+  durden = prev.callPackage ./wrapper.nix {
+    name = "durden";
+    shmifClient = [ durden-unwrapped ];
   };
 
   pipeworld-unwrapped = prev.callPackage ./pkgs/applications/window-managers/pipeworld {};
