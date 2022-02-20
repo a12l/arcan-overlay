@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
   '';
 
   postInstall = ''
-    wrapProgram $out/bin/${pname}
+    wrapProgram ${placeholder "out"}/${pname} \
       --prefix PATH ":" "${placeholder "out"}/bin" \
       --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
       --set ARCAN_BINPATH "${placeholder "out"}/bin/arcan_frameserver" \
