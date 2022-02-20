@@ -17,22 +17,20 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir --parents $out/bin $out/share/${pname}
-
-    # Copy appl's source
-    cp --recursive ./durden/* $out/share/${pname}/
-
-    # Add command
-    echo "#!${runtimeShell}
-
-    exec arcan $out/share/${pname}" > $out/bin/${pname}
-    chmod +x $out/bin/${pname}
+    mkdir --parents ${placeholder "out"}/share/arcan/appl/
+    cp -a ./${pname} ${placeholder "out"}/share/arcan/appl/
 
     runHook postInstall
   '';
 
   postInstall = ''
-    wrapProgram $out/bin/${pname} --prefix PATH : ${lib.makeBinPath [ arcan ]}
+    wrapProgram $out/bin/${pname}
+      --prefix PATH ":" "${placeholder "out"}/bin" \
+      --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
+      --set ARCAN_BINPATH "${placeholder "out"}/bin/arcan_frameserver" \
+      --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
+      --set ARCAN_RESOURCEPATH "${placeholder "out"}/share/arcan/resources/" \
+      --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
   '';
 
   meta = with lib; {
