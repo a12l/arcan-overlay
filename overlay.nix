@@ -1,9 +1,9 @@
 final: prev:
 
 rec {
-  arcan = prev.callPackage ./pkgs/servers/arcan {};
-  arcan-wrapped = prev.callPackage ./wrapper.nix {
-    name = "arcan-wrapped";
+  arcan-unwrapped = prev.callPackage ./pkgs/servers/arcan {};
+  arcan = prev.callPackage ./wrapper.nix {
+    name = "arcan";
   };
   
   xarcan = prev.callPackage ./pkgs/servers/x11/xarcan {};
