@@ -1,5 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, runtimeShell
-, bash, arcan, makeWrapper, withXarcan ? true, xarcan }:
+{ stdenv, lib, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
   pname = "durden";
@@ -12,8 +11,6 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-x8Ewx5gtRP9a0nd+TchoA0b9FfT1+W20Fbq0bf87Y2k=";
   };
 
-  buildInputs = [ arcan makeWrapper ] ++ lib.optionals withXarcan [ xarcan ];
-
   installPhase = ''
     runHook preInstall
 
@@ -21,16 +18,6 @@ stdenv.mkDerivation rec {
     cp -a ./${pname} ${placeholder "out"}/share/arcan/appl/
 
     runHook postInstall
-  '';
-
-  postInstall = ''
-    wrapProgram ${placeholder "out"}/${pname} \
-      --prefix PATH ":" "${placeholder "out"}/bin" \
-      --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
-      --set ARCAN_BINPATH "${placeholder "out"}/bin/arcan_frameserver" \
-      --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
-      --set ARCAN_RESOURCEPATH "${placeholder "out"}/share/arcan/resources/" \
-      --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
   '';
 
   meta = with lib; {
