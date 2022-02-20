@@ -33,7 +33,7 @@ in stdenv.mkDerivation rec {
     mkdir --parents $sourceRoot/external/git/openal
     pushd $sourceRoot/external/git/
     cp --recursive ${srcs.openal}/* openal/
-    chmod --recursive 777 openal/
+    chmod --recursive 744 openal/
     popd
   '';
 
