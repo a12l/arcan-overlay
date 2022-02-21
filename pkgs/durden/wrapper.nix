@@ -1,4 +1,4 @@
-{ arcan,
+{ arcan-unwrapped,
   lib,
   makeWrapper,
   # name,
@@ -13,7 +13,7 @@ symlinkJoin {
   # inherit name;
   name = "durden";
 
-  paths = [ durden-unwrapped ] ++ [ arcan ] ++ lib.optionals withXarcan [ xarcan ];
+  paths = [ durden-unwrapped ] ++ [ arcan-unwrapped ]; # ++ lib.optionals withXarcan [ xarcan ];
 
   nativeBuildInputs = [ makeWrapper ];
 
