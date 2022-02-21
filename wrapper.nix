@@ -1,4 +1,4 @@
-{ arcan,
+{ arcan-unwrapped,
   lib,
   makeWrapper,
   name,
@@ -11,7 +11,7 @@
 symlinkJoin {
   inherit name;
 
-  paths = shmifClient ++ [ arcan ] ++ lib.optionals withXarcan [ xarcan ];
+  paths = shmifClient ++ [ arcan-unwrapped ] ++ lib.optionals withXarcan [ xarcan ];
 
   nativeBuildInputs = [ makeWrapper ];
 

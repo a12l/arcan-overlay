@@ -2,10 +2,10 @@ final: prev:
 
 rec {
   arcan-unwrapped = prev.callPackage ./pkgs/arcan {};
-  arcan = prev.callPackage ./pkgs/arcan/wrapper.nix {};
-  # arcan = prev.callPackage ./wrapper.nix {
-  #   name = "arcan";
-  # };
+  # arcan = prev.callPackage ./pkgs/arcan/wrapper.nix {};
+  arcan = prev.callPackage ./wrapper.nix {
+    name = "arcan";
+  };
   
   xarcan = prev.callPackage ./pkgs/xarcan {};
 
