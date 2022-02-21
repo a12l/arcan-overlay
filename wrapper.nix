@@ -4,14 +4,14 @@
   name,
   symlinkJoin,
   shmifClient ? []
-# , withXarcan ? true
-# , xarcan
+, withXarcan ? true
+, xarcan
 }:
 
 symlinkJoin {
   inherit name;
 
-  paths = shmifClient ++ [ arcan ];# ++ lib.optionals withXarcan [ xarcan ];
+  paths = shmifClient ++ [ arcan ] ++ lib.optionals withXarcan [ xarcan ];
 
   nativeBuildInputs = [ makeWrapper ];
 
