@@ -3,17 +3,17 @@
   makeWrapper,
   # name,
   symlinkJoin,
-  durden-unwrapped,
+  # durden-unwrapped,
   # shmifClient ? [],
-  withXarcan ? true,
-  xarcan
+  # withXarcan ? true,
+  # xarcan
 }:
 
 symlinkJoin {
   # inherit name;
-  name = "durden";
+  name = "arcan";
 
-  paths = [ durden-unwrapped ] ++ [ arcan ] ++ lib.optionals withXarcan [ xarcan ];
+  paths = [ arcan ];
 
   nativeBuildInputs = [ makeWrapper ];
 
