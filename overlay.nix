@@ -9,7 +9,7 @@ rec {
   xarcan = prev.callPackage ./pkgs/xarcan {};
 
   durden-unwrapped = prev.callPackage ./pkgs/durden {};
-  durden = prev.callPackage ./pkgs/arcan/wrapper.nix {};
+  durden = prev.callPackage ./pkgs/durden/wrapper.nix {};
   # durden = prev.callPackage ./wrapper.nix {
   #   name = "durden";
   #   shmifClient = [ durden-unwrapped ];
