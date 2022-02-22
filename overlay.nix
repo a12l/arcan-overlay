@@ -10,7 +10,7 @@ final: prev: rec {
   # durden = prev.callPackage ./pkgs/durden/wrapper.nix {};
   durden = prev.callPackage ./wrapper.nix {
     name = "durden";
-    shmifClient = [durden-unwrapped];
+    shmifClient = [ durden-unwrapped ];
   };
 
   # pipeworld-unwrapped = prev.callPackage ./pkgs/pipeworld {};

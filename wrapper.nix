@@ -11,9 +11,10 @@
 symlinkJoin {
   inherit name;
 
-  paths = shmifClient ++ [arcan-unwrapped] ++ lib.optionals withXarcan [xarcan];
+  # paths = shmifClient ++ [ arcan-unwrapped ] ++ lib.optionals withXarcan [ xarcan ];
+  paths = [ durden-unwrapped ] ++ [ arcan-unwrapped ] ++ lib.optionals withXarcan [ xarcan ];
 
-  nativeBuildInputs = [makeWrapper];
+  nativeBuildInputs = [ makeWrapper ];
 
   postBuild = ''
     for program in ${placeholder "out"}/bin/*; do
