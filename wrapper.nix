@@ -7,6 +7,7 @@
   shmifClient ? [],
   withXarcan ? true,
   xarcan,
+  durden-unwrapped
 }:
 symlinkJoin {
   inherit name;
