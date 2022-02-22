@@ -1,5 +1,8 @@
-{ stdenv, lib, fetchFromGitHub }:
-
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+}:
 stdenv.mkDerivation rec {
   pname = "durden";
   version = "0.6.1+unstable=2022-01-30";
@@ -26,6 +29,6 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/letoram/durden/releases/tag/${version}";
     license = licenses.bsd3;
     platforms = platforms.all;
-    maintainers = with maintainers; [ a12l ];
+    maintainers = with maintainers; [a12l];
   };
 }

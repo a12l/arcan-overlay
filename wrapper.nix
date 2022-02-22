@@ -1,24 +1,24 @@
-{ arcan-unwrapped,
+{
+  arcan-unwrapped,
   lib,
   makeWrapper,
   name,
   symlinkJoin,
-  shmifClient ? []
-, withXarcan ? true
-, xarcan
+  shmifClient ? [],
+  withXarcan ? true,
+  xarcan,
 }:
-
 symlinkJoin {
   inherit name;
 
-  paths = shmifClient ++ [ arcan-unwrapped ] ++ lib.optionals withXarcan [ xarcan ];
+  paths = shmifClient ++ [arcan-unwrapped] ++ lib.optionals withXarcan [xarcan];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [makeWrapper];
 
   postBuild = ''
     for program in ${placeholder "out"}/bin/*; do
       wrapProgram $program \
-        --prefix PATH ":" "${placeholder "out"}/bin" \
+        --prefix PATH ":" "${placeholder "out"}/bin/" \
         --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
         --set ARCAN_BINPATH "${placeholder "out"}/bin/arcan_frameserver" \
         --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
@@ -26,5 +26,4 @@ symlinkJoin {
         --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
     done
   '';
-
 }

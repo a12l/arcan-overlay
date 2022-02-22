@@ -1,5 +1,8 @@
-{ stdenv, lib, fetchFromGitHub }:
-
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+}:
 stdenv.mkDerivation rec {
   pname = "pipeworld";
   version = "0.0.0+unstable=2021-12-03";
@@ -26,6 +29,6 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/letoram/pipeworld/releases/tag/${version}";
     license = licenses.bsd3;
     platforms = platforms.all;
-    maintainers = with maintainers; [ a12l ];
+    maintainers = with maintainers; [a12l];
   };
 }

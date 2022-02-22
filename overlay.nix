@@ -1,19 +1,16 @@
-final: prev:
-
-rec {
+final: prev: rec {
   arcan-unwrapped = prev.callPackage ./pkgs/arcan {};
-  # arcan = prev.callPackage ./pkgs/arcan/wrapper.nix {};
   arcan = prev.callPackage ./wrapper.nix {
     name = "arcan";
   };
-  
+
   xarcan = prev.callPackage ./pkgs/xarcan {};
 
   durden-unwrapped = prev.callPackage ./pkgs/durden {};
   # durden = prev.callPackage ./pkgs/durden/wrapper.nix {};
   durden = prev.callPackage ./wrapper.nix {
     name = "durden";
-    shmifClient = [ durden-unwrapped ];
+    shmifClient = [durden-unwrapped];
   };
 
   # pipeworld-unwrapped = prev.callPackage ./pkgs/pipeworld {};
