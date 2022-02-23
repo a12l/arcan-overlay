@@ -125,7 +125,7 @@ in
     cmakeFlags =
       [
         "-DBUILD_PRESET=everything"
-        "-DISTR_TAG=Nix"
+        "-DISTR_TAG=arcan-overlay"
         "-DENGINE_BUILDTAG=${version}"
         "../src"
       ]
