@@ -17,8 +17,8 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir --parents ${placeholder "out"}/share/arcan/clients/
-    cp -a ./${pname} ${placeholder "out"}/share/arcan/clients/
+    mkdir --parents ${placeholder "out"}/share/arcan/appl/
+    cp -a ./${pname} ${placeholder "out"}/share/arcan/appl/
 
     runHook postInstall
   '';

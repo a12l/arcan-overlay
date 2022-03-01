@@ -13,8 +13,14 @@ rec {
     clients = [ durden-unwrapped ];
   };
 
-  # pipeworld = prev.callPackage ./wrapper.nix {
-  #   name = "pipeworld";
-  #   shmifClient = [ pipeworld-unwrapped ];
-  # };
+  pipeworld-unwrapped = prev.callPackage ./pkgs/pipeworld {};
+  pipeworld = prev.callPackage ./wrapper.nix {
+    name = "pipeworld";
+    clients = [ pipeworld-unwrapped ];
+  };
+
+  arcan-universe = prev.callPackage ./wrapper.nix {
+    name = "arcan-universe";
+    clients = [ durden-unwrapped pipeworld-unwrapped ];
+  };
 }

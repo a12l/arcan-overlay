@@ -27,6 +27,9 @@
   libusb1,
   harfbuzzFull,
   SDL2,
+  glib,
+  mupdf,
+  pcre2,
   withVLC ? true,
   libvlc,
   withFFmpeg ? true,
@@ -50,8 +53,8 @@
     arcan = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "0145a79c26600b69114092d1d2c7c6d3cf027d6a";
-      sha256 = "sha256-IpUJlX8OPO6nmaMM50LLPsQFtfYYPuYtWRM191biwac=";
+      rev = "ffcd841610fda5dec428304907c855c0877e4ceb";
+      sha256 = "sha256-kZcFkfzauJZAM9Nul77JyTd9uJjaO9xl2OQGCrn7sug=";
     };
 
     openal = fetchFromGitHub {
@@ -64,7 +67,7 @@
 in
   stdenv.mkDerivation rec {
     pname = "arcan";
-    version = "0.6.1+unstable=2022-02-16";
+    version = "0.6.1+unstable=2022-02-27";
 
     src = srcs.arcan;
 
@@ -113,6 +116,9 @@ in
         libXau
         libXdmcp
         harfbuzzFull
+        glib
+        mupdf
+        pcre2
       ]
       ++ lib.optionals withFFmpeg [ffmpeg-full]
       ++ lib.optionals withWayland [wayland wayland-protocols]
