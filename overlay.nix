@@ -5,6 +5,11 @@ rec {
     name = "arcan";
   };
 
+  arcan-universe = prev.callPackage ./wrapper.nix {
+    name = "arcan-universe";
+    clients = [ durden-unwrapped pipeworld-unwrapped ];
+  };
+
   xarcan = prev.callPackage ./pkgs/xarcan {};
 
   durden-unwrapped = prev.callPackage ./pkgs/durden {};
@@ -19,8 +24,4 @@ rec {
     clients = [ pipeworld-unwrapped ];
   };
 
-  arcan-universe = prev.callPackage ./wrapper.nix {
-    name = "arcan-universe";
-    clients = [ durden-unwrapped pipeworld-unwrapped ];
-  };
 }
