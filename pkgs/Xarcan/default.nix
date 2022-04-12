@@ -27,7 +27,7 @@
   libGL,
   libtirpc,
   libXau,
-  arcan,
+  arcan-unwrapped,
   libxcb,
   ninja,
   libX11,
@@ -71,7 +71,7 @@ stdenv.mkDerivation rec {
     libGL
     libtirpc
     libXau
-    arcan
+    arcan-unwrapped
     libxcb
     ninja
     libX11

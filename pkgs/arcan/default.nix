@@ -53,8 +53,8 @@
     arcan = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "fba554fa4d4bba1bb31dc5b0d0402a1a990f594a";
-      sha256 = "sha256-bLLsKgAQyVkeZ2BNmaiNTQpRFCku2EkcU/b+Q/cu91I=";
+      rev = "1196ad6b693d9c46d69ec33258d52497e98fd934";
+      sha256 = "1jcpfspxazzw7ps8d6dmyz1vqg8k3c5fbk8s7z6c2gdfci5pjkg6";
     };
 
     openal = fetchFromGitHub {
@@ -67,7 +67,7 @@
 in
   stdenv.mkDerivation rec {
     pname = "arcan";
-    version = "0.6.1+unstable=2022-03-14";
+    version = "0.6.1+unstable=2022-04-10";
 
     src = srcs.arcan;
 

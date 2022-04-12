@@ -5,13 +5,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "durden";
-  version = "0.6.1+unstable=2022-03-11";
+  version = "0.6.1+unstable=2022-04-01";
 
   src = fetchFromGitHub {
     owner = "letoram";
     repo = pname;
-    rev = "fec2a1051500df28becce188d932645743091efa";
-    sha256 = "sha256-uZ7oTnkWG3P/4ETgn6MQ9v47mRAJnvyzglQS7jlabPA=";
+    rev = "21d5fb888db8acb30d9562519a3e10bc255e6897";
+    sha256 = "sha256-Au+FUUhUkF+qR1jdGdt2VfP+By6W47fNriXzVKnaG3g=";
   };
 
   installPhase = ''

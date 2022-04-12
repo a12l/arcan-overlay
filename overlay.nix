@@ -1,27 +1,16 @@
-final: prev:
-rec {
-  arcan-unwrapped = prev.callPackage ./pkgs/arcan {};
-  arcan = prev.callPackage ./wrapper.nix {
-    name = "arcan";
-  };
+final: prev: rec {
+  arcan = prev.callPackage ./pkgs/arcan {};
 
   arcan-universe = prev.callPackage ./wrapper.nix {
     name = "arcan-universe";
-    clients = [ durden-unwrapped pipeworld-unwrapped ];
+    clients = [durden pipeworld arcan];
   };
 
-  xarcan = prev.callPackage ./pkgs/xarcan {};
+  Xarcan = prev.callPackage ./pkgs/Xarcan {};
 
-  durden-unwrapped = prev.callPackage ./pkgs/durden {};
-  durden = prev.callPackage ./wrapper.nix {
-    name = "durden";
-    clients = [ durden-unwrapped ];
-  };
+  durden = prev.callPackage ./pkgs/durden {};
 
-  pipeworld-unwrapped = prev.callPackage ./pkgs/pipeworld {};
-  pipeworld = prev.callPackage ./wrapper.nix {
-    name = "pipeworld";
-    clients = [ pipeworld-unwrapped ];
-  };
+  pipeworld = prev.callPackage ./pkgs/pipeworld {};
 
+  tui-bindings-lua = prev.callPackage ./pkgs/tui-bindings-lua {};
 }
