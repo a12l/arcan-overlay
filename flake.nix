@@ -7,9 +7,7 @@
     self,
     nixpkgs,
   }: {
-    nixosModule.arcan = import ./modules/;#arcan.nix;
-    # nixosModule = self.nixosModules.arcan;
-
+    nixosModule.arcan = import ./modules;
     overlay = import ./overlay.nix;
   };
 }
