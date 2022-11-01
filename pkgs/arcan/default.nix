@@ -27,54 +27,44 @@
   libusb1,
   harfbuzzFull,
   SDL2,
-  glib,
+  # glib,
+  musl,
   mupdf,
   pcre2,
-  withVLC ? true,
-  libvlc,
-  withFFmpeg ? true,
-  ffmpeg-full,
-  withWayland ? true,
-  wayland,
-  wayland-protocols,
-  withEspeak ? true,
-  espeak-classic,
-  withLibmagic ? true,
-  file,
-  withTesseract ? true,
-  tesseract,
-  withLeptonica ? true,
-  leptonica,
-  withVNC ? true,
-  libvncserver,
+  generateManPages ? true, ruby,
+  withVLC ? true, libvlc,
+  withFFmpeg ? true, ffmpeg-full,
+  withWayland ? true, wayland, wayland-protocols,
+  withEspeak ? true, espeak-classic,
+  withLibmagic ? true, file,
+  withTesseract ? true, tesseract,
+  withLeptonica ? true, leptonica,
+  withVNC ? true, libvncserver,
   debugging ? false,
-}: let
-  srcs = {
-    arcan = fetchFromGitHub {
+}:
+  stdenv.mkDerivation (finalAttrs: {
+    pname = "arcan";
+    version = "0.6.2+unstable=2022-10-31";
+
+    src = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "1196ad6b693d9c46d69ec33258d52497e98fd934";
-      sha256 = "1jcpfspxazzw7ps8d6dmyz1vqg8k3c5fbk8s7z6c2gdfci5pjkg6";
+      rev = "c3e63a9a6b3f0497944662677c6df98422aa3f30";
+      sha256 = "0ldb1mj58k0hsscarlxjb2p1zb16slky4py5grychwfa40m13ip5";
     };
 
-    openal = fetchFromGitHub {
-      owner = "letoram";
-      repo = "openal";
-      rev = "1c7302c580964fee9ee9e1d89ff56d24f934bdef";
-      sha256 = "sha256-InqU59J0zvwJ20a7KU54xTM7d76VoOlFbtj7KbFlnTU=";
-    };
-  };
-in
-  stdenv.mkDerivation rec {
-    pname = "arcan";
-    version = "0.6.1+unstable=2022-04-10";
-
-    src = srcs.arcan;
-
-    postUnpack = ''
+    postUnpack = let
+      openal = fetchFromGitHub {
+        owner = "letoram";
+        repo = "openal";
+        rev = "1c7302c580964fee9ee9e1d89ff56d24f934bdef";
+        sha256 = "sha256-InqU59J0zvwJ20a7KU54xTM7d76VoOlFbtj7KbFlnTU=";
+      };
+    in
+    ''
       mkdir --parents $sourceRoot/external/git/openal
       pushd $sourceRoot/external/git/
-      cp --recursive ${srcs.openal}/* openal/
+      cp --recursive ${openal}/* openal/
       chmod --recursive 744 openal/
       popd
     '';
@@ -88,7 +78,10 @@ in
       	--replace "SETUID" "# SETUID"
     '';
 
-    nativeBuildInputs = [cmake pkg-config];
+    nativeBuildInputs = [
+      cmake
+      pkg-config
+    ] ++ lib.optionals generateManPages [ ruby ];
 
     buildInputs =
       [
@@ -116,8 +109,8 @@ in
         libXau
         libXdmcp
         harfbuzzFull
-        glib
-        mupdf
+	      musl
+        mupdf.dev
         pcre2
       ]
       ++ lib.optionals withFFmpeg [ffmpeg-full]
@@ -126,18 +119,20 @@ in
       ++ lib.optionals withLibmagic [file]
       ++ lib.optionals withTesseract [tesseract]
       ++ lib.optionals withLeptonica [leptonica]
-      ++ lib.optionals withVNC [libvncserver];
+      ++ lib.optionals withVNC [libvncserver]
+    ;
 
     cmakeFlags =
       [
         "-DBUILD_PRESET=everything"
         "-DISTR_TAG=arcan-overlay"
-        "-DENGINE_BUILDTAG=${version}"
+        "-DENGINE_BUILDTAG=${finalAttrs.version}"
         "../src"
       ]
       ++ lib.optionals debugging ["-DCMAKE_BUILD_TYPE=Debug"];
 
-    hardeningDisable = ["format"] ++ lib.optionals debugging ["fortify"];
+    hardeningDisable = ["format"]
+    ++ lib.optionals debugging ["fortify"];
 
     meta = with lib; {
       description = "Scriptable Multimedia Engine";
@@ -148,9 +143,9 @@ in
         surveillance, up to and including desktop compositors and window managers.
       '';
       homepage = "https://github.com/letoram/arcan";
-      changelog = "https://github.com/letoram/arcan/releases/tag/${version}";
+      changelog = "https://github.com/letoram/arcan/releases/tag/${finalAttrs.version}";
       license = with licenses; [gpl2Plus lgpl2Plus bsd3];
       platforms = platforms.all;
       maintainers = with maintainers; [a12l];
     };
-  }
+  })

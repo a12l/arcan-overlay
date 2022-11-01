@@ -8,6 +8,7 @@
     nixpkgs,
   }: {
     nixosModule.arcan = import ./modules;
+    
     overlay = import ./overlay.nix;
   };
 }

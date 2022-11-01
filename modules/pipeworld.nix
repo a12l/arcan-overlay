@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.arcan.pipeworld;
+  pipeworld = cfg.package;
 in {
   options.arcan.pipeworld = {
     enable = mkOption {
@@ -17,7 +18,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.pipeworld-unwrapped;
+      default = pkgs.pipeworld;
       description = ''
       '';
     };

@@ -27,7 +27,7 @@
   libGL,
   libtirpc,
   libXau,
-  arcan-unwrapped,
+  arcan,
   libxcb,
   ninja,
   libX11,
@@ -36,13 +36,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "xarcan";
-  version = "0.6.0+unstable=2021-08-26";
+  version = "0.6.1+unstable=2022-06-14";
 
   src = fetchFromGitHub {
     owner = "letoram";
     repo = pname;
-    rev = "e40f0176e495ffdad6e7405c58378df6532eb70d";
-    sha256 = "sha256:103wvkjxbpw98qcgwyrsq5kizs6lvkjyimi7g7j30cgrncpnivag";
+    rev = "02111f4925453c0c545e9193c6a5e22c0d4e98c3";
+    sha256 = "06c8gcvm0rprdsm7bjbfir0wcx5zzz5px69agxfydl7g2qssr7df";
   };
 
   nativeBuildInputs = [meson pkg-config];
@@ -71,7 +71,7 @@ stdenv.mkDerivation rec {
     libGL
     libtirpc
     libXau
-    arcan-unwrapped
+    arcan
     libxcb
     ninja
     libX11

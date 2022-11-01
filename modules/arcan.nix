@@ -13,7 +13,6 @@ in {
       type = types.bool;
       default = false;
       description = ''
-        You do not need to enable this option if you have enabled one or more appls.
       '';
     };
 

@@ -3,22 +3,26 @@
   lib,
   fetchFromGitHub,
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "durden";
-  version = "0.6.1+unstable=2022-04-01";
+  version = "0.0.0+unstable=2022-10-29";
 
   src = fetchFromGitHub {
     owner = "letoram";
-    repo = pname;
-    rev = "21d5fb888db8acb30d9562519a3e10bc255e6897";
-    sha256 = "sha256-Au+FUUhUkF+qR1jdGdt2VfP+By6W47fNriXzVKnaG3g=";
+    repo = finalAttrs.pname;
+    rev = "bba14be3c7c33db58abfce179b7f99d82a0af36b";
+    sha256 = "1h5jr6xbcccki16bxj11dir37b7syddvpgcjxxkypkga8gl10h30";
   };
+
+  dontConfigure = true;
+
+  dontBuild = true;
 
   installPhase = ''
     runHook preInstall
 
     mkdir --parents ${placeholder "out"}/share/arcan/appl/
-    cp -a ./${pname} ${placeholder "out"}/share/arcan/appl/
+    cp -a ./${finalAttrs.pname} ${placeholder "out"}/share/arcan/appl/
 
     runHook postInstall
   '';
@@ -30,4 +34,4 @@ stdenv.mkDerivation rec {
     license = licenses.bsd3;
     platforms = platforms.all;
   };
-}
+})

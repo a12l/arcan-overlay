@@ -5,13 +5,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "cat9";
-  version = "0.6.1+unstable=2022-08-28";
+  version = "0.6.1+unstable=2022-10-31";
 
   src = fetchFromGitHub {
     owner = "letoram";
     repo = pname;
-    rev = "a2d7478940458e9c7738dce2ae660f96880b3e66";
-    sha256 = "0x74hgdwhn5x4ll2nkv4dg4ibq9fw82wp11va58yvcpa2jgry54x";
+    rev = "cde776e2ba833fc9847087a83f853396d5dd73d9";
+    sha256 = "0lxfjwdlvjzdyah3p9qcz4cspq4bm38jd4mc6rjn4aa1457m8q96";
   };
 
   installPhase = ''

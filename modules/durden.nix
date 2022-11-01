@@ -18,7 +18,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.durden-unwrapped;
+      default = pkgs.durden;
       description = ''
       '';
     };
