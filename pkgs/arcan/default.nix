@@ -49,7 +49,7 @@
     src = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "52ea880c585c06531f66eaf20e378fa232d06ed2";
+      rev = "70412fb3a4e38ff3b694bb8862b57e705ad55731";
       sha256 = "053d9wqy4zmyplh5a5z22xgk35dv25hyaiwhm01lcrbkg8hagdln";
     };
 
