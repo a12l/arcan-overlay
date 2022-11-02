@@ -25,7 +25,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [arcan];
+    environment.systemPackages = [arcan pkgs.lua5_1];
 
     security.wrappers.arcan = {
       owner = "root";

@@ -49,8 +49,8 @@
     src = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "c3e63a9a6b3f0497944662677c6df98422aa3f30";
-      sha256 = "0ldb1mj58k0hsscarlxjb2p1zb16slky4py5grychwfa40m13ip5";
+      rev = "52ea880c585c06531f66eaf20e378fa232d06ed2";
+      sha256 = "053d9wqy4zmyplh5a5z22xgk35dv25hyaiwhm01lcrbkg8hagdln";
     };
 
     postUnpack = let
@@ -143,7 +143,6 @@
         surveillance, up to and including desktop compositors and window managers.
       '';
       homepage = "https://github.com/letoram/arcan";
-      changelog = "https://github.com/letoram/arcan/releases/tag/${finalAttrs.version}";
       license = with licenses; [gpl2Plus lgpl2Plus bsd3];
       platforms = platforms.all;
       maintainers = with maintainers; [a12l];

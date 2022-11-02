@@ -12,7 +12,7 @@ final: prev: rec {
       durden-unwrapped
       pipeworld-unwrapped
       arcan-unwrapped
-      luaarcantui-unwrapped
+      # luaarcantui-unwrapped
     ];
   };
 
