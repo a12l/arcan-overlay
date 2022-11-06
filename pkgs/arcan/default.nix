@@ -31,7 +31,6 @@
   musl,
   mupdf,
   pcre2,
-  generateManPages ? true, ruby,
   withVLC ? true, libvlc,
   withFFmpeg ? true, ffmpeg-full,
   withWayland ? true, wayland, wayland-protocols,
@@ -44,13 +43,13 @@
 }:
   stdenv.mkDerivation (finalAttrs: {
     pname = "arcan";
-    version = "0.6.2+unstable=2022-10-31";
+    version = "0.6.2+unstable=2022-11-06";
 
     src = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "70412fb3a4e38ff3b694bb8862b57e705ad55731";
-      sha256 = "053d9wqy4zmyplh5a5z22xgk35dv25hyaiwhm01lcrbkg8hagdln";
+      rev = "8c02a74d9c83740d731d4f117478fece210f5d7b";
+      sha256 = "16s4zgc17rns6vykkbwhjgnn98sr6h06nrl7p39j9cf9fhb4l58g";
     };
 
     postUnpack = let
@@ -81,7 +80,7 @@
     nativeBuildInputs = [
       cmake
       pkg-config
-    ] ++ lib.optionals generateManPages [ ruby ];
+    ];
 
     buildInputs =
       [

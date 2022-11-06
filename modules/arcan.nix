@@ -15,8 +15,8 @@ in {
       description = ''
       '';
     };
-
-    package = mkOption {
+ 
+   package = mkOption {
       type = types.package;
       default = pkgs.arcan-universe;
       description = ''
@@ -25,7 +25,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [arcan pkgs.lua5_1];
+    environment.systemPackages = [arcan];
 
     security.wrappers.arcan = {
       owner = "root";

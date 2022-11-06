@@ -8,9 +8,9 @@ final: prev: rec {
   arcan-universe = prev.callPackage ./wrapper.nix {
     name = "arcan-universe";
     clients = [
-      cat9-unwrapped
-      durden-unwrapped
-      pipeworld-unwrapped
+      # cat9-unwrapped
+      # durden-unwrapped
+      # pipeworld-unwrapped
       arcan-unwrapped
       # luaarcantui-unwrapped
     ];
