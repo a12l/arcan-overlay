@@ -27,7 +27,7 @@
   libusb1,
   harfbuzzFull,
   SDL2,
-  # glib,
+  glib,
   musl,
   mupdf,
   pcre2,
@@ -39,7 +39,8 @@
   withTesseract ? true, tesseract,
   withLeptonica ? true, leptonica,
   withVNC ? true, libvncserver,
-  debugging ? false,
+  debugging ? true,
+  disableJit ? false,
 }:
   stdenv.mkDerivation (finalAttrs: {
     pname = "arcan";
@@ -108,7 +109,8 @@
         libXau
         libXdmcp
         harfbuzzFull
-	      musl
+        glib
+	      # musl
         mupdf.dev
         pcre2
       ]
@@ -127,8 +129,11 @@
         "-DISTR_TAG=arcan-overlay"
         "-DENGINE_BUILDTAG=${finalAttrs.version}"
         "../src"
-      ]
-      ++ lib.optionals debugging ["-DCMAKE_BUILD_TYPE=Debug"];
+      ] ++ lib.optionals debugging [
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ] ++ lib.optionals disableJit [
+        "-DISABLE_JIT=true"
+      ];
 
     hardeningDisable = ["format"]
     ++ lib.optionals debugging ["fortify"];
