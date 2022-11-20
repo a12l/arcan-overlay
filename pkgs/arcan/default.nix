@@ -39,18 +39,18 @@
   withTesseract ? true, tesseract,
   withLeptonica ? true, leptonica,
   withVNC ? true, libvncserver,
-  debugging ? true,
+  debugging ? false,
   disableJit ? false,
 }:
   stdenv.mkDerivation (finalAttrs: {
     pname = "arcan";
-    version = "0.6.2+unstable=2022-11-06";
+    version = "0.6.2+unstable=2022-11-17";
 
     src = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "8c02a74d9c83740d731d4f117478fece210f5d7b";
-      sha256 = "16s4zgc17rns6vykkbwhjgnn98sr6h06nrl7p39j9cf9fhb4l58g";
+      rev = "b7bbd825e34ba98aa438d64958f02fa6ab749e3d";
+      sha256 = "sha256-qCJ8F1QqgCzLxKhQ4pq+lbY9d5RJtjRf8+pI26u3zVE=";
     };
 
     postUnpack = let

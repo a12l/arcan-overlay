@@ -13,7 +13,9 @@ final: prev: rec {
       pipeworld-unwrapped
       arcan-unwrapped
       luaarcantui-unwrapped
-      (prev.lua5_1.withPackages (ps: with ps; [lua-lsp]))
+      (prev.lua5_1.withPackages (ps: [
+        ps.lua-lsp
+      ]))
     ];
   };
 
@@ -36,6 +38,10 @@ final: prev: rec {
   };
 
   luaarcantui-unwrapped = prev.callPackage ./pkgs/luaarcantui {};
+  luaarcantui = prev.callPackage ./wrapper.nix {
+    name = "luaarcantui";
+    clients = [ arcan-unwrapped luaarcantui-unwrapped ];
+  };
 
   Xarcan = prev.callPackage ./pkgs/Xarcan {};
 }
