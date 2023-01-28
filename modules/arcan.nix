@@ -15,10 +15,10 @@ in {
       description = ''
       '';
     };
- 
+
    package = mkOption {
       type = types.package;
-      default = pkgs.arcan-universe;
+      default = pkgs.arcan;
       description = ''
       '';
     };

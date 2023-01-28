@@ -44,13 +44,13 @@
 }:
   stdenv.mkDerivation (finalAttrs: {
     pname = "arcan";
-    version = "0.6.2+unstable=2022-11-17";
+    version = "0.6.2+unstable=2022-12-05";
 
     src = fetchFromGitHub {
       owner = "letoram";
       repo = "arcan";
-      rev = "b7bbd825e34ba98aa438d64958f02fa6ab749e3d";
-      sha256 = "sha256-qCJ8F1QqgCzLxKhQ4pq+lbY9d5RJtjRf8+pI26u3zVE=";
+      rev = "b1399d8a4f8631e01c9b22722477efa6952e4a92";
+      sha256 = "sha256-TtkHgosymeNy0oAkgiitGDurZ7S5xEDwODXaN4h3Bwg=";
     };
 
     postUnpack = let

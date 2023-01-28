@@ -2,15 +2,21 @@ final: prev: rec {
   arcan-unwrapped = prev.callPackage ./pkgs/arcan {};
   arcan = prev.callPackage ./wrapper.nix {
     name = "arcan";
-    clients = [ arcan-unwrapped ];
+    clients = [
+      arcan-unwrapped
+      #luaarcantui-unwrapped
+      #(prev.lua5_1.withPackages (ps: [
+        #ps.lua-lsp
+      #]))
+    ];
   };
 
   arcan-universe = prev.callPackage ./wrapper.nix {
     name = "arcan-universe";
     clients = [
-      cat9-unwrapped
-      durden-unwrapped
-      pipeworld-unwrapped
+      #cat9-unwrapped
+      #durden-unwrapped
+      #pipeworld-unwrapped
       arcan-unwrapped
       luaarcantui-unwrapped
       (prev.lua5_1.withPackages (ps: [
